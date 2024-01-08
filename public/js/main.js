@@ -12,21 +12,21 @@ class Heros {
         this.pv=pv;
         this.posture=posture;
         this.particularite=particularite;
-        this.posture = (x) => {
+        this.posture = () => {
             this.posture=prompt("choissisez attaque ou defense");
             switch (this.posture) {
             
                 case "attaque":
-                    console.log("vous etes en attaque vous infligez 20% plus de dégât");   
-                    this.force=(this.force/100)*20;
-                    console.log(this.force);
-                    // x.force=x.force/2
+                    console.log(`${this.nom} est en attaque vous infligez 20% plus de dégât`);   
+                    // this.force=(this.force/100)*20;
+                    // console.log(this.force);
+                    
                     
                     break;
                 case "defense":
-                    console.log("vous etes en defense vous prenez moitier moin de degats");
-                    x.force=x.force/2
-                    console.log(x.force);   
+                    console.log(`${this.nom} est en defense vous prenez moitier moin de degats`);
+                    // x.force=x.force/2
+                    // console.log(x.force);   
                     break;
                 default:
                     console.log("merci de rentrer attaque ou defense");
@@ -61,16 +61,31 @@ class Heros {
 
 let sauron = new Boss ("Sauron",1,0);
 let chronos = new Boss ("Chronos",0,0);
-let lilith = new Boss ("Lilith",0,0);
+let lilith = new Boss ("Lilith",0,100);
 
 let guerrier = new Heros ("artus",100,0,"",0)
 let mage = new Heros ("ariel",0,0,"",7)
 let archer = new Heros ("eric",0,0,"",6)
 
-// guerrier.posture(sauron)
-// console.log(guerrier.posture);
-console.log(guerrier.particularite);
-guerrier.guerrier()
-console.log(guerrier.particularite);
+
+
+
+//! debut du jeux !
+
+
+// guerrier.nom=prompt("entree un nom pour votre guerrier !")
+// mage.nom=prompt("entree un nom pour votre mage !")
+// archer.nom=prompt("entree un nom pour votre archer !")
+
+// guerrier.posture()
+// mage.posture()
+// archer.posture()
+
+while (sauron.pv>=1,chronos.pv>=1,lilith.pv>=1) {
+    console.log("ewa");
+}
+console.log("zebi");
+
+
 
 
