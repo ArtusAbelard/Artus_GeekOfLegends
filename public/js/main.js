@@ -34,16 +34,23 @@ class Heros {
             }
             }
         this.guerrier = () => {
-            if (this.particularite=4) {
+            if (this.particularite>=4) {
                 console.log("vous etes guerrier et vous avez 4 point de rage vous infligez 25% de dégât en plus");   
                 this.force=(this.force/100)*25;
                 console.log(this.force);                
             }
         }
         this.mage = () => {
-            if (this.particularite=4) {
+            if (this.particularite<=1) {
+                console.log("vous etes mage et vous avez plus de point de mana vous passez votre tours et recuperer 7 de mana");  
+                this.particularite=7
                 
-                
+            }
+        }
+        this.archer = () => {
+            if (this.particularite<=0) {
+                console.log("vous etes archer et vous avez plus de fleches vous passez votre tours et recuperer 6 fleches");  
+                this.particularite=6 
             }
         }
         };
@@ -58,8 +65,12 @@ let lilith = new Boss ("Lilith",0,0);
 
 let guerrier = new Heros ("artus",100,0,"",0)
 let mage = new Heros ("ariel",0,0,"",7)
-let archer = new Heros ("eric",0,0,"",0)
+let archer = new Heros ("eric",0,0,"",6)
 
-artus.posture(sauron)
-console.log(artus.posture);
+// guerrier.posture(sauron)
+// console.log(guerrier.posture);
+console.log(guerrier.particularite);
+guerrier.guerrier()
+console.log(guerrier.particularite);
+
 
