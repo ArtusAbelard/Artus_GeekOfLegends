@@ -81,10 +81,35 @@ let archer = new Heros ("eric",0,0,"",6)
 // mage.posture()
 // archer.posture()
 
-while (sauron.pv>=1,chronos.pv>=1,lilith.pv>=1) {
-    console.log("ewa");
+
+
+
+while (guerrier.pv+mage.pv+archer.pv != 150) {
+    alert("veuillez répartir 150 pv pour vos 3 heros attention minimum 1hp par heros")
+    guerrier.pv= +prompt("veuillez donnez les pv pour le guerrier");
+    console.log(guerrier.pv);
+    mage.pv= +prompt("veuillez donnez les pv pour le mage");
+    console.log(mage.pv);
+    archer.pv= +prompt("veuillez donnez les pv pour le archer");  
+    console.log(archer.pv); 
 }
-console.log("zebi");
+console.log("parfait");
+// while (guerrier.pv,mage.pv,archer.pv >= 1) {
+// console.log("faux");    
+    
+// }
+// console.log("super");
+
+
+
+// guerrier.pv=prompt("veuillez donnez les pv pour le guerrier");
+// mage.pv=prompt("veuillez donnez les pv pour le mage");
+// archer.pv=prompt("veuillez donnez les pv pour le archer");
+
+// while (sauron.pv>=1,chronos.pv>=1,lilith.pv>=1) {
+//     console.log("ewa");1
+// }
+// console.log("zebi");
 
 
 
