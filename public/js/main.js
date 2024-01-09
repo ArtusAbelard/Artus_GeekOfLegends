@@ -1,3 +1,5 @@
+
+
 class Boss {
     constructor(nom,force,pv){
         this.nom=nom;
@@ -211,16 +213,45 @@ function ataquearcher(x,y) {
     }
 }
 
+function bossattack (x) {
+    if (bossrandomadversaire.posture=="defense") {
+    bossrandomadversaire.pv=bossrandomadversaire.pv-(x.force/2)
+    console.log(`${x.nom} attaque ${bossrandomadversaire.nom} et ${bossrandomadversaire.nom} est en defense et ducoup n'a plus que ${bossrandomadversaire.pv} hp`);
+    }else{
+    console.log(bossrandomadversaire.pv);
+    bossrandomadversaire.pv=bossrandomadversaire.pv-x.force
+    console.log(`${x.nom} attaque ${bossrandomadversaire.nom} et ${bossrandomadversaire.nom} n'est pas en defense et ducoup n'a plus que ${bossrandomadversaire.pv} hp`);
+    }
+}
+
+   
 
 
+
+
+// function alertFunc5() {
+//     ataqueguerrier(bosschoice,guerrier)
+//     console.log(" ");
+//     ataquemage(bosschoice,mage)
+//     console.log(" ");
+//     ataquearcher(bosschoice,archer);
+//     console.log(" ");
+//     bossrandomchose();
+//     bossattack(bosschoice);
+//     guerrier.posture()
+//     mage.posture()
+//     archer.posture()
+    
+    
+// }
 
 
 //! debut du jeux !
 
 
-// guerrier.nom=prompt("entree un nom pour votre guerrier !")
-// mage.nom=prompt("entree un nom pour votre mage !")
-// archer.nom=prompt("entree un nom pour votre archer !")
+guerrier.nom=prompt("entree un nom pour votre guerrier !")
+mage.nom=prompt("entree un nom pour votre mage !")
+archer.nom=prompt("entree un nom pour votre archer !")
 
 randomchose()
 
@@ -229,27 +260,27 @@ mage.posture()
 archer.posture()
 
 
-// while (guerrier.pv+mage.pv+archer.pv != 150 ){
-//     alert("veuillez répartir 150 pv pour vos 3 heros attention minimum 1hp par heros")
-//     guerrier.pv= +prompt("veuillez donnez les pv pour le guerrier");
-//     console.log(`le guerrier a ${guerrier.pv} pv`);
-//     mage.pv= +prompt("veuillez donnez les pv pour le mage");
-//     console.log(`le mage a ${mage.pv} pv`);
-//     archer.pv= +prompt("veuillez donnez les pv pour le archer");  
-//     console.log(`l'archer a ${archer.pv} pv`); 
-// }
-// console.log("parfait");
+while (guerrier.pv+mage.pv+archer.pv != 150 ){
+    alert("veuillez répartir 150 pv pour vos 3 heros attention minimum 1hp par heros")
+    guerrier.pv= +prompt("veuillez donnez les pv pour le guerrier");
+    console.log(`le guerrier a ${guerrier.pv} pv`);
+    mage.pv= +prompt("veuillez donnez les pv pour le mage");
+    console.log(`le mage a ${mage.pv} pv`);
+    archer.pv= +prompt("veuillez donnez les pv pour le archer");  
+    console.log(`l'archer a ${archer.pv} pv`); 
+}
+console.log("parfait");
 
-// while (guerrier.force+mage.force+archer.force != 120 ){
-//     alert("veuillez répartir 120 point de force pour vos 3 heros attention minimum 1hp par heros")
-//     guerrier.force= +prompt("veuillez donnez la force pour le guerrier");
-//     console.log(`le guerrier a ${guerrier.force} de force`);
-//     mage.force= +prompt("veuillez donnez la force pour le mage");
-//     console.log(`le mage a ${mage.force} de force`);
-//     archer.force= +prompt("veuillez donnez la force pour le archer");  
-//     console.log(`l'archer a ${archer.force} de force`); 
-// }
-// console.log("parfait");
+while ( (guerrier.force+mage.force+archer.force != 120 ) && (guerrier.force,mage.force,archer.force >= 1) ) {
+    alert("veuillez répartir 120 point de force pour vos 3 heros attention minimum 1hp par heros")
+    guerrier.force= +prompt("veuillez donnez la force pour le guerrier");
+    console.log(`le guerrier a ${guerrier.force} de force`);
+    mage.force= +prompt("veuillez donnez la force pour le mage");
+    console.log(`le mage a ${mage.force} de force`);
+    archer.force= +prompt("veuillez donnez la force pour le archer");  
+    console.log(`l'archer a ${archer.force} de force`); 
+}
+console.log("parfait");
 
 
 //? while (guerrier.pv,mage.pv,archer.pv >= 1) {
@@ -259,37 +290,36 @@ archer.posture()
 
 
 
-// console.log("LE JEUX VA COMMENCER DANS :");
+console.log("LE JEUX VA COMMENCER DANS :");
 timeout()
 
-
-// while (sauron.pv>=1,chronos.pv>=1,lilith.pv>=1) {
-//     console.log("ewa");
-//     switch (heros) {
-
-//         case heros[0]:
-//             console.log(ewa);
-//             break;
-//         case heros[1]: 
-//             break;
-//         case heros[2]:    
-//             break;    
-//         default:
-//             break;
-//     }
-    
-// }
-// console.log("jeux finit !");
+let stopp = confirm("voulez vous arreter ? (oui ou non)")
 
 function alertFunc5() {
-    ataqueguerrier(bosschoice,guerrier)
-    console.log(" ");
-    ataquemage(bosschoice,mage)
-    console.log(" ");
-    ataquearcher(bosschoice,archer);
-    console.log(" ");
-    bossrandomchose()
+    while (stopp==false){
+        ataqueguerrier(bosschoice,guerrier)
+        console.log(" ");
+        ataquemage(bosschoice,mage)
+        console.log(" ");
+        ataquearcher(bosschoice,archer);
+        console.log(" ");
+        bossrandomchose();
+        bossattack(bosschoice);
+        guerrier.posture=prompt("entree une nouvel posture attaque ou defense pour le guerrier");
+        console.log(`guerrier ce trouve en ${guerrier.posture}`);
+        mage.posture=prompt("entree une nouvel posture attaque ou defense pour le mage");
+        console.log(`le mage ce trouve en ${mage.posture}`);
+        archer.posture=prompt("entree une nouvel posture attaque ou defense pour l archer");
+        console.log(`l'archer ce trouve en ${archer.posture}`);
+        stopp = confirm("voulez vous arreter ? (oui ou non)")
+        console.log(stopp);
+
+    }
+    console.log("jeux finit !");   
 }
+// (bosschoice.pv>=1)
+// while (sauron.pv>=1,chronos.pv>=1,lilith.pv>=1)
+
 
 
 
