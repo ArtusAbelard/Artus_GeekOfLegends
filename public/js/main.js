@@ -72,15 +72,41 @@ let bosschoice
 let randomchose = () => {
     if (Math.random() * 100 < 33.3333) {
         bosschoice=sauron
-        console.log(bosschoice.nom);
+        console.log(`${bosschoice.nom} a ete choisis `);
     }
     else if (Math.random() * 100 < 33.3333) {
         bosschoice=chronos
-        console.log(bosschoice.nom);
+        console.log(`${bosschoice.nom} a ete choisis `);
     }else{
         bosschoice=lilith
-        console.log(bosschoice.nom);
+        console.log(`${bosschoice.nom} a ete choisis `);
     }
+}
+
+let timeout1;
+let timeout2;
+let timeout3;
+let timeout4;
+
+
+function timeout() {
+  timeout1 = setTimeout(alertFunc1, 1000);
+  timeout2 = setTimeout(alertFunc2, 2000);
+  timeout3 = setTimeout(alertFunc3, 3000);
+  timeout4 = setTimeout(alertFunc4, 4000);
+}
+
+function alertFunc1() {
+  console.log("3");
+}
+function alertFunc2() {
+    console.log("2");
+}
+function alertFunc3() {
+    console.log("1");
+}
+function alertFunc4() {
+    console.log("GO");
 }
 
 
@@ -115,6 +141,10 @@ let randomchose = () => {
 
 
 randomchose()
+
+console.log("LE JEUX VA COMMENCER DANS :");
+
+timeout()
 
 
 
