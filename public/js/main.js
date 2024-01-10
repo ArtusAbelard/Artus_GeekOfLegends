@@ -64,9 +64,9 @@ class Heros {
 
 
 
-let sauron = new Boss ("Sauron",50,700);
-let chronos = new Boss ("Chronos",40,1000);
-let lilith = new Boss ("Lilith",30,10000);
+let sauron = new Boss ("Sauron",50,400);
+let chronos = new Boss ("Chronos",40,400);
+let lilith = new Boss ("Lilith",30,800);
 
 let guerrier = new Heros ("artus",50,0,"",0,"guerrier")
 let mage = new Heros ("ariel",60,0,"",7,"mage")
@@ -76,7 +76,7 @@ let heros = [guerrier,mage,archer]
 
 let bosschoice
 
-let bossrandomadversaire
+let bossrandomadversaire 
 
 let randomchose = () => {
     if (Math.random() * 100 < 33.3333) {
@@ -136,81 +136,101 @@ function alertFunc4() {
 
 
 function ataqueguerrier(x,y) {
-    if (y.particularite>=4) {
-        console.log("vous etes guerrier et vous avez 4 point de rage vous infligez 25% de dégât en plus");   
-        x.pv=x.pv-(y.force+(y.force/100)*25);
-        y.particularite=0
-        console.log(`le boss n'a plus que ${x.pv} pv`);
-        if (y.posture=="attaque") {
-            console.log(`${y.nom} est en attaque degat augmenter de 20%`);
-            x.pv=y.force+(y.force/100)*20;
+    if (y.pv>=1) {
+        if (y.particularite>=4) {
+            console.log("vous etes guerrier et vous avez 4 point de rage vous infligez 25% de dégât en plus");   
+            x.pv=x.pv-(y.force+(y.force/100)*25);
+            y.particularite=0
             console.log(`le boss n'a plus que ${x.pv} pv`);
+            if (y.posture=="attaque") {
+                console.log(`${y.nom} est en attaque degat augmenter de 20%`);
+                x.pv=y.force+(y.force/100)*20;
+                console.log(`le boss n'a plus que ${x.pv} pv`);
+            }else{
+                console.log(`${y.nom} est en defense ${y.nom} prend moin de degats`);
+                x.pv=x.pv-y.force
+                console.log(y.force);
+                console.log(`le boss n'a plus que ${x.pv} pv`);   
+    
+            }           
         }else{
-            console.log(`${y.nom} est en defense ${y.nom} prend moin de degats`);
-            x.pv=x.pv-y.force
-            console.log(y.force);
-            console.log(`le boss n'a plus que ${x.pv} pv`);   
-
-        }           
-    }else{
-        console.log("vous etes guerrier et vous avez pas assez de point de rage vous infligez les dégâts normaux");
-        x.pv=x.pv-y.force;
-        y.particularite=y.particularite+1;
-        console.log(`le boss n'a plus que ${x.pv} pv`);
-        if (y.posture=="attaque") {
-            console.log(`${y.nom} est en attaque degat augmenter de 20%`);
-            x.pv=x.pv-(y.force+(y.force/100)*20);
+            console.log("vous etes guerrier et vous avez pas assez de point de rage vous infligez les dégâts normaux");
+            x.pv=x.pv-y.force;
+            y.particularite=y.particularite+1;
+            console.log(`le ${y.type} a actuellement ${y.particularite} point de rage`);
             console.log(`le boss n'a plus que ${x.pv} pv`);
-        }else if (y.posture=="defense"){
-            console.log(`${y.nom} est en defense ${y.nom} prend moitier moin de degats`);
-            x.pv=x.pv-y.force
-            console.log(`le boss n'a plus que ${x.pv} pv`);  
-        };
-    } 
+            if (y.posture=="attaque") {
+                console.log(`${y.nom} est en attaque degat augmenter de 20%`);
+                x.pv=x.pv-(y.force+(y.force/100)*20);
+                console.log(`le boss n'a plus que ${x.pv} pv`);
+            }else if (y.posture=="defense"){
+                console.log(`${y.nom} est en defense ${y.nom} prend moitier moin de degats`);
+                x.pv=x.pv-y.force
+                console.log(`le boss n'a plus que ${x.pv} pv`);  
+            };
+        } 
+        
+    }else{
+        console.log(`${y.type} est mort est ne joue donc plus !`);
+    }
 }
 function ataquemage(x,y) {
-    if (y.particularite<=1) {
-        console.log("vous etes mage et vous avez plus de point de mana vous passez votre tours et recuperer 7 de mana");  
-        y.particularite=7
-    }else{
-        console.log("vous etes mage et vous avez assez de point de mana vous infligez les dégâts normaux");
-        x.pv=x.pv-y.force;
-        y.particularite=y.particularite-2
-        console.log(`le boss n'a plus que ${x.pv} pv`);
-        if (y.posture=="attaque") {
-            console.log(`${y.nom} est en attaque degat augmenter de 20%`);
-            x.pv=x.pv-(y.force+(y.force/100)*20);
+    if (y.pv>=1) {
+        if (y.particularite<=1) {
+            console.log("vous etes mage et vous avez plus de point de mana vous passez votre tours et recuperer 7 de mana");  
+            y.particularite=y.particularite+7
+            console.log(`le ${y.type} a actuellement ${y.particularite} point de mana`);
+        }else{
+            console.log("vous etes mage et vous avez assez de point de mana vous infligez les dégâts normaux");
+            x.pv=x.pv-y.force;
+            y.particularite=y.particularite-2
+            console.log(`le ${y.type} a actuellement ${y.particularite} point de mana`);
             console.log(`le boss n'a plus que ${x.pv} pv`);
-        }else if (y.posture=="defense"){
-            console.log(`${y.nom} est en defense ${y.nom} prend moitier moin de degats`);
-            x.pv=x.pv-y.force
-            // console.log(y.force); 
-            console.log(`le boss n'a plus que ${x.pv} pv`);  
-        };
+            if (y.posture=="attaque") {
+                console.log(`${y.nom} est en attaque degat augmenter de 20%`);
+                x.pv=x.pv-(y.force+(y.force/100)*20);
+                console.log(`le boss n'a plus que ${x.pv} pv`);
+            }else if (y.posture=="defense"){
+                console.log(`${y.nom} est en defense ${y.nom} prend moitier moin de degats`);
+                x.pv=x.pv-y.force
+                // console.log(y.force); 
+                console.log(`le boss n'a plus que ${x.pv} pv`);  
+            };
+            
+        }
         
+    }else{
+        console.log(`${y.type} est mort est ne joue donc plus !`);
     } 
 }
 
 function ataquearcher(x,y) {
-    if (y.particularite<=0) {
-        console.log("vous etes archer et vous avez plus de fleches vous passez votre tours et recuperer 6 fleches");  
-        y.particularite=6 
-    }else{
-        console.log("vous etes archer et vous avez assez de fléches vous infligez les dégâts normaux");
-        y.particularite=y.particularite-2
-        x.pv=x.pv-y.force;
-        console.log(`le boss n'a plus que ${x.pv} pv`);  
-        if (y.posture=="attaque") {
-            console.log(`${y.nom} est en attaque degat augmenter de 20%`);
-            x.pv=x.pv-(y.force+(y.force/100)*20);
-            console.log(`le boss n'a plus que ${x.pv} pv`);
-        }else if (y.posture=="defense"){
-            console.log(`${y.nom} est en defense ${y.nom} prend moin de degats`);
-            x.pv=x.pv-y.force
-            // console.log(y.force); 
+    if (y.pv>=1) {
+        if (y.particularite<=0) {
+            console.log("vous etes archer et vous avez plus de fleches vous passez votre tours et recuperer 6 fleches");  
+            y.particularite=6 
+            console.log(`le ${y.type} a actuellement ${y.particularite} fleches`);
+        }else{
+            console.log("vous etes archer et vous avez assez de fléches vous infligez les dégâts normaux");
+            y.particularite=y.particularite-2
+            console.log(`le ${y.type} a actuellement ${y.particularite}fleches`);
+            x.pv=x.pv-y.force;
             console.log(`le boss n'a plus que ${x.pv} pv`);  
-        } 
-    }
+            if (y.posture=="attaque") {
+                console.log(`${y.nom} est en attaque degat augmenter de 20%`);
+                x.pv=x.pv-(y.force+(y.force/100)*20);
+                console.log(`le boss n'a plus que ${x.pv} pv`);
+            }else if (y.posture=="defense"){
+                console.log(`${y.nom} est en defense ${y.nom} prend moin de degats`);
+                x.pv=x.pv-y.force
+                // console.log(y.force); 
+                console.log(`le boss n'a plus que ${x.pv} pv`);  
+            } 
+        }
+        
+    }else{
+        console.log(`${y.type} est mort est ne joue donc plus !`);
+    } 
 }
 
 function bossattack (x) {
@@ -218,7 +238,7 @@ function bossattack (x) {
     bossrandomadversaire.pv=bossrandomadversaire.pv-(x.force/2)
     console.log(`${x.nom} attaque ${bossrandomadversaire.nom} et ${bossrandomadversaire.nom} est en defense et ducoup n'a plus que ${bossrandomadversaire.pv} hp`);
     }else{
-    console.log(bossrandomadversaire.pv);
+    
     bossrandomadversaire.pv=bossrandomadversaire.pv-x.force
     console.log(`${x.nom} attaque ${bossrandomadversaire.nom} et ${bossrandomadversaire.nom} n'est pas en defense et ducoup n'a plus que ${bossrandomadversaire.pv} hp`);
     }
@@ -227,23 +247,6 @@ function bossattack (x) {
    
 
 
-
-
-// function alertFunc5() {
-//     ataqueguerrier(bosschoice,guerrier)
-//     console.log(" ");
-//     ataquemage(bosschoice,mage)
-//     console.log(" ");
-//     ataquearcher(bosschoice,archer);
-//     console.log(" ");
-//     bossrandomchose();
-//     bossattack(bosschoice);
-//     guerrier.posture()
-//     mage.posture()
-//     archer.posture()
-    
-    
-// }
 
 
 //! debut du jeux !
@@ -293,10 +296,11 @@ console.log("parfait");
 console.log("LE JEUX VA COMMENCER DANS :");
 timeout()
 
-let stopp = confirm("voulez vous arreter ?")
+// let stopp = confirm("voulez vous arreter ?")
+// (stopp==false)
 
 function alertFunc5() {
-    while (stopp==false){
+    while (bosschoice.pv>=1){
         ataqueguerrier(bosschoice,guerrier)
         console.log(" ");
         ataquemage(bosschoice,mage)
@@ -304,20 +308,38 @@ function alertFunc5() {
         ataquearcher(bosschoice,archer);
         console.log(" ");
         bossrandomchose();
+        console.log(" ");
         bossattack(bosschoice);
+        console.log(" ");
         guerrier.posture=prompt("entree une nouvel posture attaque ou defense pour le guerrier");
+        console.log(" ");
         console.log(`guerrier ce trouve en ${guerrier.posture}`);
+        
         mage.posture=prompt("entree une nouvel posture attaque ou defense pour le mage");
+        
         console.log(`le mage ce trouve en ${mage.posture}`);
+       
         archer.posture=prompt("entree une nouvel posture attaque ou defense pour l archer");
+        
         console.log(`l'archer ce trouve en ${archer.posture}`);
-        stopp = confirm("voulez vous arreter ?")
-        console.log(stopp);
+        console.log(" ");
+        // stopp = confirm("voulez vous arreter ?")
+        // console.log(stopp);
 
     }
-    console.log("jeux finit !");   
+    console.log("jeux finit !");
+    
+    if (bosschoice.pv<=0) {
+        console.log("les heros on gagner !");
+        
+    }else if (guerrier.pv+mage.pv+archer.pv<=0){
+        console.log(`le boss ${bosschoice.nom} a gagner !`);
+    }
+    
+     
 }
 // (bosschoice.pv>=1)
+
 // while (sauron.pv>=1,chronos.pv>=1,lilith.pv>=1)
 
 
