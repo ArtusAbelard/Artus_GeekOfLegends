@@ -293,7 +293,7 @@ console.log("parfait");
 console.log("LE JEUX VA COMMENCER DANS :");
 timeout()
 
-let stopp = confirm("voulez vous arreter ? (oui ou non)")
+let stopp = confirm("voulez vous arreter ?")
 
 function alertFunc5() {
     while (stopp==false){
@@ -311,7 +311,7 @@ function alertFunc5() {
         console.log(`le mage ce trouve en ${mage.posture}`);
         archer.posture=prompt("entree une nouvel posture attaque ou defense pour l archer");
         console.log(`l'archer ce trouve en ${archer.posture}`);
-        stopp = confirm("voulez vous arreter ? (oui ou non)")
+        stopp = confirm("voulez vous arreter ?")
         console.log(stopp);
 
     }
