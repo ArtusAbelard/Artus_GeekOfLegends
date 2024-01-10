@@ -62,11 +62,13 @@ class Heros {
         
     }
 
-
+// boss
 
 let sauron = new Boss ("Sauron",50,400);
 let chronos = new Boss ("Chronos",40,400);
 let lilith = new Boss ("Lilith",30,800);
+
+// heros
 
 let guerrier = new Heros ("artus",50,0,"",0,"guerrier")
 let mage = new Heros ("ariel",60,0,"",7,"mage")
@@ -76,7 +78,12 @@ let heros = [guerrier,mage,archer]
 
 let bosschoice
 
+
+
+// let bossrandomadversaire1= [guerrier,mage,archer]
 let bossrandomadversaire 
+
+// random chose boss
 
 let randomchose = () => {
     if (Math.random() * 100 < 33.3333) {
@@ -91,6 +98,51 @@ let randomchose = () => {
         console.log(`${bosschoice.nom} a ete choisis `);
     }
 }
+// random chose heros
+
+
+// let bossrandomchose= () => {
+//     if (guerrier.pv<=0) {
+//         bossrandomadversaire1.splice(0,1);  
+//     }else if (mage.pv<=0) {
+//         bossrandomadversaire1.splice(1,1);  
+//     }else if (archer.pv<=0) {
+//         bossrandomadversaire1.splice(2,1);     
+//     }
+//     if (bossrandomadversaire1.length=3) {
+//         console.log("il y a 3 heros encore en vie !");
+//         if (Math.random() * 100 < 33.3333) {
+//             bossrandomadversaire1=bossrandomadversaire1[0]
+//             console.log(`${guerrier.nom} a ete choisis comme adversaire contre ${bosschoice.nom}`);
+//         }
+//         else if (Math.random() * 100 < 33.3333) {
+            
+//             bossrandomadversaire1=bossrandomadversaire1[1]
+//             console.log(`${mage.nom} a ete choisis comme adversaire contre ${bosschoice.nom}`);
+//         }else{
+            
+//             bossrandomadversaire1=bossrandomadversaire1[2]
+//             console.log(`${archer.nom} a ete choisis comme adversaire contre ${bosschoice.nom}`);
+//         }
+//     }else if (bossrandomadversaire1.length=2) {
+//         console.log("il y a 2 heros encore en vie !");
+//         if (Math.random() * 100 < 50) {
+//             bossrandomadversaire1=bossrandomadversaire1[0]
+//             console.log(`${bossrandomadversaire1[0]} a ete choisis comme adversaire contre ${bosschoice.nom}`);
+//         }
+//         else{
+            
+//             bossrandomadversaire1=bossrandomadversaire1[1]
+//             console.log(`${bossrandomadversaire1[1]} a ete choisis comme adversaire contre ${bosschoice.nom}`);
+//         }
+        
+//     }else if (bossrandomadversaire1.length=1){
+//         bossrandomadversaire1=bossrandomadversaire1[0]
+//         console.log(`${bossrandomadversaire1[0]} est le seul survivant il va devoir affronter seul ${bosschoice.nom}`);
+//     }      
+// }
+
+
 let bossrandomchose= () => {
     if (Math.random() * 100 < 33.3333) {
         bossrandomadversaire=guerrier
@@ -104,6 +156,8 @@ let bossrandomchose= () => {
         console.log(`${bossrandomadversaire.nom} a ete choisis comme adversaire contre ${bosschoice.nom}`);
     }
 }
+
+// add timout of 4 sec for starting the game 
 
 let timeout1;
 let timeout2;
@@ -134,6 +188,7 @@ function alertFunc4() {
     console.log("");
 }
 
+// atack function
 
 function ataqueguerrier(x,y) {
     if (y.pv>=1) {
@@ -174,6 +229,7 @@ function ataqueguerrier(x,y) {
         console.log(`${y.type} est mort est ne joue donc plus !`);
     }
 }
+
 function ataquemage(x,y) {
     if (y.pv>=1) {
         if (y.particularite<=1) {
@@ -249,7 +305,13 @@ function bossattack (x) {
 
 
 
+
+
+
+
 //! debut du jeux !
+
+
 
 
 guerrier.nom=prompt("entree un nom pour votre guerrier !")
@@ -283,24 +345,15 @@ while ( (guerrier.force+mage.force+archer.force != 120 ) && (guerrier.force,mage
     archer.force= +prompt("veuillez donnez la force pour le archer");  
     console.log(`l'archer a ${archer.force} de force`); 
 }
+
 console.log("parfait");
-
-
-//? while (guerrier.pv,mage.pv,archer.pv >= 1) {
-//? console.log("faux");    
-//? }
-//? console.log("super");
-
-
-
 console.log("LE JEUX VA COMMENCER DANS :");
 timeout()
 
-// let stopp = confirm("voulez vous arreter ?")
-// (stopp==false)
+
 
 function alertFunc5() {
-    while (bosschoice.pv>=1){
+    while ((guerrier.pv+mage.pv+archer.pv>=1)||(bosschoice.pv>=1)){  //je ne comprend pas pourquoi mon || ne fonctionne pas ...
         ataqueguerrier(bosschoice,guerrier)
         console.log(" ");
         ataquemage(bosschoice,mage)
@@ -323,8 +376,7 @@ function alertFunc5() {
         
         console.log(`l'archer ce trouve en ${archer.posture}`);
         console.log(" ");
-        // stopp = confirm("voulez vous arreter ?")
-        // console.log(stopp);
+        
 
     }
     console.log("jeux finit !");
@@ -338,9 +390,7 @@ function alertFunc5() {
     
      
 }
-// (bosschoice.pv>=1)
 
-// while (sauron.pv>=1,chronos.pv>=1,lilith.pv>=1)
 
 
 
