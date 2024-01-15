@@ -175,7 +175,7 @@ function enigme () {
         if (Math.random() * 100 < 33.3333) {
             console.log("Quel est l'animal le plus sourd du monde ?");
             let reponse1 = prompt("reponse?")
-            if (reponse1="La grenouille") {
+            if (reponse1=="La grenouille") {
                 bosschoice.pv=0
                 console.log("bien jouer les heros on gagner !");
             }else{
@@ -184,13 +184,11 @@ function enigme () {
                 archer.pv=0
                 console.log("dommage c est La grenouille car elle fait « Coaaa, cooooa ».");
             }
-            
-            
         }
         else if (Math.random() * 100 < 33.3333) {
             console.log("Je commence la nuit et je termine le matin. Qui suis-je ?");
             let reponse2 = prompt("reponse?")
-            if (reponse2="n") {
+            if (reponse2=="n") {
                 bosschoice.pv=0
                 console.log("bien jouer les heros on gagner !");
             }else{
@@ -203,8 +201,8 @@ function enigme () {
             
         }else{
             console.log("Je transforme une plante en une planète. Qui suis-je ?");
-            let reponse2 = prompt("reponse?")
-            if (reponse2="è") {
+            let reponse3 = prompt("reponse?")
+            if (reponse3=="è") {
                 bosschoice.pv=0
                 console.log("bien jouer les heros on gagner !");
             }else{
@@ -217,7 +215,12 @@ function enigme () {
             
         }
         
-    }
+    }if (bosschoice.pv<(guerrier.pv+mage.pv+archer.pv)) {
+            console.log("les heros on gagner !");
+            
+        }else{
+            console.log(`le boss ${bosschoice.nom} a gagner !`);
+        }
     
 }
 
@@ -287,16 +290,6 @@ export function lejeux() {
         }
         enigme()
         console.log("jeux finit !");
-        
-        if (bosschoice.pv<=0) {
-            console.log("les heros on gagner !");
-            
-        }else if (guerrier.pv+mage.pv+archer.pv<=0){
-            console.log(`le boss ${bosschoice.nom} a gagner !`);
-        }
-
-        
-         
     }
 
 }
