@@ -1,9 +1,9 @@
 // boss
 import * as CLASS from "./class.js"
 
-export let sauron = new CLASS.Boss ("Sauron",50,400);
-export let chronos = new CLASS.Boss ("Chronos",40,400);
-export let lilith = new CLASS.Boss ("Lilith",30,800);
+export let sauron = new CLASS.Boss ("Sauron",50,500);
+export let chronos = new CLASS.Boss ("Chronos",40,500);
+export let lilith = new CLASS.Boss ("Lilith",30,500);
 
 // heros
 

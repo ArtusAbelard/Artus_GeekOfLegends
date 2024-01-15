@@ -170,6 +170,57 @@ function bossattack (x) {
     }
 }
 
+function enigme () {
+    if (bosschoice.pv<=100) {
+        if (Math.random() * 100 < 33.3333) {
+            console.log("Quel est l'animal le plus sourd du monde ?");
+            let reponse1 = prompt("reponse?")
+            if (reponse1="La grenouille") {
+                bosschoice.pv=0
+                console.log("bien jouer les heros on gagner !");
+            }else{
+                guerrier.pv=0
+                mage.pv=0
+                archer.pv=0
+                console.log("dommage c est La grenouille car elle fait « Coaaa, cooooa ».");
+            }
+            
+            
+        }
+        else if (Math.random() * 100 < 33.3333) {
+            console.log("Je commence la nuit et je termine le matin. Qui suis-je ?");
+            let reponse2 = prompt("reponse?")
+            if (reponse2="n") {
+                bosschoice.pv=0
+                console.log("bien jouer les heros on gagner !");
+            }else{
+                guerrier.pv=0
+                mage.pv=0
+                archer.pv=0
+                console.log("dommage c est La lettre « N »");
+            }
+            
+            
+        }else{
+            console.log("Je transforme une plante en une planète. Qui suis-je ?");
+            let reponse2 = prompt("reponse?")
+            if (reponse2="è") {
+                bosschoice.pv=0
+                console.log("bien jouer les heros on gagner !");
+            }else{
+                guerrier.pv=0
+                mage.pv=0
+                archer.pv=0
+                console.log("dommage c est La lettre « è »");
+            }
+            
+            
+        }
+        
+    }
+    
+}
+
 
 
 
@@ -232,7 +283,9 @@ export function lejeux() {
             
             console.log(`l'archer ce trouve en ${archer.posture}`);
             console.log(" ");
+            
         }
+        enigme()
         console.log("jeux finit !");
         
         if (bosschoice.pv<=0) {
