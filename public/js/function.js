@@ -215,7 +215,7 @@ function enigme () {
             
         }
         
-    }if (bosschoice.pv<(guerrier.pv+mage.pv+archer.pv)) {
+    }else if (bosschoice.pv<(guerrier.pv+mage.pv+archer.pv)) {
             console.log("les heros on gagner !");
             
         }else{
